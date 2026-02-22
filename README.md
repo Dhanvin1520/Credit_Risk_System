@@ -15,9 +15,12 @@ Credit_Risk-_System/
 │   └── loan_credit_data.csv       # 45,000 borrower records
 ├── src/
 │   ├── preprocessing.py           # Data cleaning, encoding, scaling, splitting
-│   ├── training.py                # Model training, evaluation, saving
+│   ├── train_logistic_regression.py  # Standalone LR model training
+│   ├── train_decision_tree.py     # Standalone DT model training
+│   ├── training.py                # Orchestrator to run both models
 │   └── app.py                     # Streamlit web application
 ├── models/                        # Auto-generated: saved models & plots
+├── .gitignore
 ├── requirements.txt
 └── README.md
 ```
@@ -69,10 +72,10 @@ streamlit run src/app.py
 ---
 
 ## 🤖 Models Used
-| Model | Role | Key Parameters |
-|---|---|---|
-| **Logistic Regression** | Primary | `max_iter=1000`, `class_weight='balanced'` |
-| **Decision Tree** | Secondary | `max_depth=6`, `class_weight='balanced'` |
+| Model | Role | Key Parameters | Accuracy | ROC-AUC |
+|---|---|---|---|---|
+| **Logistic Regression** | Primary | `max_iter=1000` | **89.7%** | **0.953** |
+| **Decision Tree** | Secondary | `max_depth=6`, `min_samples_leaf=50` | **91.6%** | **0.960** |
 
 Both models are evaluated on **Accuracy**, **ROC-AUC**, **Classification Report**, and **Confusion Matrix**.
 
@@ -96,10 +99,10 @@ Both models are evaluated on **Accuracy**, **ROC-AUC**, **Classification Report*
 ---
 
 ## ⚠️ Key Design Decisions
-- **Class imbalance handled** via `class_weight='balanced'` (77%/22% split)
 - **Outlier removal**: age capped at 80, employment experience at 50 yrs, income at 99th percentile
 - **No data leakage**: scaler fitted only on training set, applied to test set
 - **Stratified split**: maintains class ratio across train and test
+- **Prediction Consistency**: Kept class weights default so Logistic Regression maintains calibrated probability outputs compared to Decision Tree.
 
 ---
 
