@@ -1,0 +1,30 @@
+{
+  "Logistic Regression": {
+    "accuracy": 0.8557,
+    "roc_auc": 0.9529,
+    "confusion_matrix": [
+      [
+        5832,
+        1088
+      ],
+      [
+        197,
+        1791
+      ]
+    ]
+  },
+  "Decision Tree": {
+    "accuracy": 0.885,
+    "roc_auc": 0.9623,
+    "confusion_matrix": [
+      [
+        6133,
+        787
+      ],
+      [
+        237,
+        1751
+      ]
+    ]
+  }
+}
