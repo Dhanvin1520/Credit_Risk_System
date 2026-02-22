@@ -69,12 +69,14 @@ def build_input_df(row_dict, feature_names):
     """Convert user inputs into a correctly ordered & encoded DataFrame."""
     df = pd.DataFrame([row_dict])
 
-    # One-hot encode (must match preprocessing exactly)
+    # One-hot encode without dropping first (reindex will handle the drops naturally)
     cat_cols = ["person_gender", "person_home_ownership", "loan_intent"]
-    df = pd.get_dummies(df, columns=cat_cols, drop_first=True)
+    df = pd.get_dummies(df, columns=cat_cols)
 
-    # Align to training feature order (fill missing dummies with 0)
+    # Align to training feature order (drops reference dummy & fills missing with 0)
     df = df.reindex(columns=feature_names, fill_value=0)
+    # Convert any boolean columns created by get_dummies to integers
+    df = df.astype(float)
     return df
 
 
@@ -271,8 +273,8 @@ with tab2:
 
             # Encode & scale
             cat_cols = ["person_gender", "person_home_ownership", "loan_intent"]
-            batch_enc = pd.get_dummies(batch_df, columns=cat_cols, drop_first=True)
-            batch_enc = batch_enc.reindex(columns=feature_names, fill_value=0)
+            batch_enc = pd.get_dummies(batch_df, columns=cat_cols)
+            batch_enc = batch_enc.reindex(columns=feature_names, fill_value=0).astype(float)
             batch_scaled = scaler.transform(batch_enc)
 
             model = MODELS[model_choice]

@@ -75,7 +75,7 @@ streamlit run src/app.py
 | Model | Role | Key Parameters | Accuracy | ROC-AUC |
 |---|---|---|---|---|
 | **Logistic Regression** | Primary | `max_iter=1000` | **89.7%** | **0.953** |
-| **Decision Tree** | Secondary | `max_depth=6`, `min_samples_leaf=50` | **91.6%** | **0.960** |
+| **Decision Tree** | Secondary | `max_depth=12`, `min_samples_leaf=15` | **92.3%** | **0.966** |
 
 Both models are evaluated on **Accuracy**, **ROC-AUC**, **Classification Report**, and **Confusion Matrix**.
 

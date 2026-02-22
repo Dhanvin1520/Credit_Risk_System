@@ -37,8 +37,8 @@ def run():
 
     # Train model
     model = DecisionTreeClassifier(
-        max_depth=6,
-        min_samples_leaf=50,
+        max_depth=12,
+        min_samples_leaf=15,
         random_state=RANDOM_STATE,
     )
     model.fit(X_train, y_train)

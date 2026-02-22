@@ -14,16 +14,16 @@
     ]
   },
   "Decision Tree": {
-    "accuracy": 0.9163,
-    "roc_auc": 0.9603,
+    "accuracy": 0.9233,
+    "roc_auc": 0.9664,
     "confusion_matrix": [
       [
-        6699,
-        221
+        6741,
+        179
       ],
       [
-        525,
-        1463
+        504,
+        1484
       ]
     ]
   }
