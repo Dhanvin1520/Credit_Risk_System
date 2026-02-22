@@ -103,4 +103,4 @@ if __name__ == "__main__":
     print("  Decision Tree — Training")
     print("=" * 60)
     metrics = run()
-    print(f"\n[✓] Done.  Accuracy={metrics['accuracy']}  ROC-AUC={metrics['roc_auc']}\n")
+    print(f"\n[] Done.  Accuracy={metrics['accuracy']}  ROC-AUC={metrics['roc_auc']}\n")

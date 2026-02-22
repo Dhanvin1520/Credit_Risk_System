@@ -26,7 +26,7 @@ MODEL_DIR = os.path.join(BASE_DIR, "models")
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Credit Risk Scoring System",
-    page_icon="🏦",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -82,11 +82,11 @@ def build_input_df(row_dict, feature_names):
 
 def risk_badge(prob: float):
     if prob >= 0.60:
-        return "high",   "🔴 HIGH RISK"
+        return "high",   " HIGH RISK"
     elif prob >= 0.35:
-        return "medium", "🟡 MEDIUM RISK"
+        return "medium", " MEDIUM RISK"
     else:
-        return "low",    "🟢 LOW RISK"
+        return "low",    " LOW RISK"
 
 
 # ── Load everything ─────────────────────────────────────────────────────────────
@@ -104,12 +104,12 @@ except FileNotFoundError:
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.image("https://img.icons8.com/color/96/bank-building.png", width=80)
-    st.markdown("## 🏦 Credit Risk System")
+    st.markdown("##  Credit Risk System")
     st.markdown("*Intelligent Lending Decision Support*")
     st.divider()
 
     if artifacts_ready:
-        model_choice = st.selectbox("🤖 Select Model", list(MODELS.keys()))
+        model_choice = st.selectbox(" Select Model", list(MODELS.keys()))
         st.divider()
         st.markdown("**About this system**")
         st.info(
@@ -118,12 +118,12 @@ with st.sidebar:
             "on 45,000 historical loan records."
         )
     else:
-        st.error("⚠️ Models not found. Please run:\n\n"
+        st.error(" Models not found. Please run:\n\n"
                  "```\npython src/preprocessing.py\npython src/training.py\n```")
 
 
 # ── Tabs ────────────────────────────────────────────────────────────────────────
-st.title("🏦 Intelligent Credit Risk Scoring System")
+st.title(" Intelligent Credit Risk Scoring System")
 st.markdown("*Milestone 1 — Machine Learning Based Credit Risk Prediction*")
 st.divider()
 
@@ -132,9 +132,9 @@ if not artifacts_ready:
     st.stop()
 
 tab1, tab2, tab3 = st.tabs([
-    "👤  Single Borrower Prediction",
-    "📂  Batch CSV Upload",
-    "📊  Model Performance",
+    "  Single Borrower Prediction",
+    "  Batch CSV Upload",
+    "  Model Performance",
 ])
 
 
@@ -142,13 +142,13 @@ tab1, tab2, tab3 = st.tabs([
 # TAB 1 — Single Borrower Prediction
 # ════════════════════════════════════════════════════════════════════════════════
 with tab1:
-    st.subheader("👤 Single Borrower Risk Assessment")
+    st.subheader(" Single Borrower Risk Assessment")
     st.markdown("Fill in the borrower details below and click **Predict**.")
 
     c1, c2, c3 = st.columns(3)
 
     with c1:
-        st.markdown("#### 👨‍💼 Personal Information")
+        st.markdown("####  Personal Information")
         person_age    = st.slider("Age", 18, 80, 30)
         person_gender = st.selectbox("Gender", ["male", "female"])
         person_income = st.number_input(
@@ -167,7 +167,7 @@ with tab1:
         )
 
     with c2:
-        st.markdown("#### 💰 Loan Details")
+        st.markdown("####  Loan Details")
         loan_amnt    = st.number_input(
             "Loan Amount (₹ / $)", min_value=500, max_value=35000,
             value=10000, step=500)
@@ -180,7 +180,7 @@ with tab1:
         st.metric("Loan-to-Income Ratio", f"{loan_percent_income:.2%}")
 
     with c3:
-        st.markdown("#### 📋 Credit History")
+        st.markdown("####  Credit History")
         cb_person_cred_hist_length = st.slider(
             "Credit History Length (years)", 2, 30, 5)
         credit_score = st.slider("Credit Score", 390, 850, 650)
@@ -190,7 +190,7 @@ with tab1:
             horizontal=True)
 
     st.divider()
-    predict_btn = st.button("🔍 Predict Credit Risk", type="primary", use_container_width=True)
+    predict_btn = st.button(" Predict Credit Risk", type="primary", use_container_width=True)
 
     if predict_btn:
         raw = {
@@ -243,7 +243,7 @@ with tab1:
             contrib = contrib.reindex(
                 contrib["Risk Contribution"].abs().sort_values(ascending=False).index
             ).head(8)
-            st.markdown("#### 🔑 Top Risk Drivers")
+            st.markdown("####  Top Risk Drivers")
             st.dataframe(contrib[["Feature", "Risk Contribution"]].reset_index(drop=True),
                          use_container_width=True)
 
@@ -252,7 +252,7 @@ with tab1:
 # TAB 2 — Batch CSV Upload
 # ════════════════════════════════════════════════════════════════════════════════
 with tab2:
-    st.subheader("📂 Batch Credit Risk Assessment")
+    st.subheader(" Batch Credit Risk Assessment")
     st.info("Upload a CSV with borrower data. "
             "The file should have the same columns as the training dataset.")
 
@@ -301,7 +301,7 @@ with tab2:
             # Download
             csv_bytes = result_df.to_csv(index=False).encode()
             st.download_button(
-                "⬇️ Download Results as CSV",
+                " Download Results as CSV",
                 data=csv_bytes,
                 file_name="credit_risk_predictions.csv",
                 mime="text/csv",
@@ -325,7 +325,7 @@ with tab2:
 # TAB 3 — Model Performance
 # ════════════════════════════════════════════════════════════════════════════════
 with tab3:
-    st.subheader("📊 Model Performance Metrics")
+    st.subheader(" Model Performance Metrics")
 
     # ── Summary cards ───────────────────────────────────────────────────────────
     cols = st.columns(len(metrics))
@@ -390,4 +390,4 @@ with tab3:
         st.pyplot(fig)
 
     st.markdown("---")
-    st.caption("📌 Credit Risk Scoring System · Milestone 1 · Mid-Semester Submission")
+    st.caption(" Credit Risk Scoring System · Milestone 1 · Mid-Semester Submission")

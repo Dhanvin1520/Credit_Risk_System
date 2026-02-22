@@ -1,14 +1,14 @@
-# 🏦 Intelligent Credit Risk Scoring System
+#  Intelligent Credit Risk Scoring System
 ### Google GenAI Capstone — Milestone 1 (Mid-Semester Submission)
 
 ---
 
-## 📌 Problem Statement
+##  Problem Statement
 Predict borrower creditworthiness and default probability from historical loan data using supervised machine learning, without LLMs or Agentic AI.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 ```
 Credit_Risk-_System/
 ├── Data/
@@ -27,7 +27,7 @@ Credit_Risk-_System/
 
 ---
 
-## 📊 Dataset Overview
+##  Dataset Overview
 | Property | Value |
 |---|---|
 | Rows | 45,000 |
@@ -38,7 +38,7 @@ Credit_Risk-_System/
 
 ---
 
-## ⚙️ Setup Instructions
+##  Setup Instructions
 
 ### 1. Clone the repository
 ```bash
@@ -71,7 +71,7 @@ streamlit run src/app.py
 
 ---
 
-## 🤖 Models Used
+##  Models Used
 | Model | Role | Key Parameters | Accuracy | ROC-AUC |
 |---|---|---|---|---|
 | **Logistic Regression** | Primary | `max_iter=1000` | **89.7%** | **0.953** |
@@ -81,16 +81,16 @@ Both models are evaluated on **Accuracy**, **ROC-AUC**, **Classification Report*
 
 ---
 
-## 🖥️ UI Features (Streamlit)
+##  UI Features (Streamlit)
 | Tab | Description |
 |---|---|
-| 👤 Single Borrower | Input borrower details via sliders/dropdowns → get risk score, probability & badge |
-| 📂 Batch CSV Upload | Upload CSV → predict all rows → download results |
-| 📊 Model Performance | View accuracy, ROC-AUC, confusion matrices, feature plots |
+|  Single Borrower | Input borrower details via sliders/dropdowns → get risk score, probability & badge |
+|  Batch CSV Upload | Upload CSV → predict all rows → download results |
+|  Model Performance | View accuracy, ROC-AUC, confusion matrices, feature plots |
 
 ---
 
-## 🧪 Evaluation Metrics
+##  Evaluation Metrics
 - **Accuracy** — Overall correct predictions
 - **ROC-AUC** — Ability to discriminate defaults from non-defaults
 - **Confusion Matrix** — TP, FP, TN, FN breakdown
@@ -98,7 +98,7 @@ Both models are evaluated on **Accuracy**, **ROC-AUC**, **Classification Report*
 
 ---
 
-## ⚠️ Key Design Decisions
+##  Key Design Decisions
 - **Outlier removal**: age capped at 80, employment experience at 50 yrs, income at 99th percentile
 - **No data leakage**: scaler fitted only on training set, applied to test set
 - **Stratified split**: maintains class ratio across train and test
@@ -106,8 +106,8 @@ Both models are evaluated on **Accuracy**, **ROC-AUC**, **Classification Report*
 
 ---
 
-## 👥 Team
+##  Team
 Google GenAI Capstone Project — Milestone 1 (Mid-Semester)
 
 ---
-*⚠️ No LLMs, Agentic AI, or external APIs used in this milestone.*
+* No LLMs, Agentic AI, or external APIs used in this milestone.*

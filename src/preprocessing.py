@@ -130,7 +130,7 @@ def main():
     X_train, X_test, y_train, y_test, scaler, feature_names = scale_and_split(df)
     save_artifacts(X_train, X_test, y_train, y_test, scaler, feature_names)
 
-    print("\n[✓] Preprocessing complete.\n")
+    print("\n[] Preprocessing complete.\n")
 
 
 if __name__ == "__main__":

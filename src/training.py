@@ -53,7 +53,7 @@ def main():
     for name, m in metrics.items():
         print(f"{name:<25} {m['accuracy']:>10.4f} {m['roc_auc']:>10.4f}")
 
-    print("\n[✓] Training complete.\n")
+    print("\n[] Training complete.\n")
 
 
 if __name__ == "__main__":

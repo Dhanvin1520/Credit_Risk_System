@@ -106,4 +106,4 @@ if __name__ == "__main__":
     print("  Logistic Regression — Training")
     print("=" * 60)
     metrics = run()
-    print(f"\n[✓] Done.  Accuracy={metrics['accuracy']}  ROC-AUC={metrics['roc_auc']}\n")
+    print(f"\n[] Done.  Accuracy={metrics['accuracy']}  ROC-AUC={metrics['roc_auc']}\n")
